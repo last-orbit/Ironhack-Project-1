@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Wars</title>
+    <link rel="icon" href="./images/Ships/Spaceship02.png" sizes="32x32" type="image/png" >
+    <title>Colony Wars</title>
     <link rel="stylesheet" href="./Styles/styles.css">
 </head>
 <body>
-    <section id="game-intro">
-        <h1>Space Wars</h1>
-        <p>A classic space exploration game where you control a spaceship and dodge asteroids.</p>
-        <button id="start-button">Start Game</button>
+    <section id="game-intro" >
+        <h1>Colony Wars</h1>
+        <p>A classic shoot-em up.</p>
+        <button id="start-button" >Start Game</button>
     </section>
-    <section id="game-container"></section>
-    <section id="game-end"></section>
-    <script src="./Js/game.js"></script>
-    <script src="./Js/script.js"></script>
+    <section id="game-container">
+        <div id="stat-info"><!-- has the high score and lives counter-->
+            <p id="Score">Score:</p>
+            <p id="lives">Lives:</p>
+        </div>
+        <div id="game-screen"></div><!-- has the game screen-->
+        <div id="ctrl-info" class="key-info"><!-- has the controls? -->
+            <p >Use <span id="space-bar"></span> to shoot</p>
+            <p>Use <span id="left-ctrl"></span> to go left</p>
+            <p>Use <span id="right-ctrl"></span> to go right </p>
+            <p>Use <span id="up-ctrl"></span> to go up</p>
+            <p>Use <span id="down-ctrl"></span> to go down</p>
+
+        </div>
+    </section>
+    <section id="game-end" style="display: none;">
+                <h1>Game Over</h1>
+                <div class="end-scores">
+<p>Your Score:</p>
+<p>High Score:</p>
+                </div>
+<p>You lost and the universe has plunge into darkness</p>
+                <button id="restart-button">Play Again</button>
+    </section>
+    <script type="text/javascript" src="Js/obstacles.js"></script>
+    <script type="text/javascript" src="Js/enemies.js"></script>
+    <script type="text/javascript" src="Js/player.js"></script>
+    <script type="text/javascript" src="./Js/game.js"></script>
+    <script type="text/javascript" src="./Js/script.js"></script>
 </body>
+
 </html>

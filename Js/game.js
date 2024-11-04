@@ -1,53 +1,60 @@
-const startScreen = document.querySelector('#game-intro');
-const gameScreen = document.querySelector('#game-screen');
-const endScreen = document.querySelector('#game-end');
-
-
 class Game {
-    constructor(startScreen, gameScreen, endScreen, player, height, width, obstacles, score, lives, gameIsOver, gameIntervalID, gameLoopFrequency) {
-        this.startScreen = startScreen;
-        this.gameScreen = gameScreen;
-        this.endScreen = endScreen;
-        this.player = player;
-        this.height = height;
-        this.width = width;
-        this.obstacles = obstacles;
-        this.score = score;
-        this.lives = lives;
-        this.gameIsOver = gameIsOver;
-        this.gameIntervalID = gameIntervalID;
-        this.gameLoopFrequency = gameLoopFrequency;
+  constructor() {
+    this.startScreen = document.getElementById('game-intro');
+      this.gameContainer = document.getElementById('game-container');
+      this.gameScreen = document.getElementById('game-screen')
+    this.endScreen = document.getElementById('game-end');
+    this.scoreElement = document.getElementById('score');
+    this.livesElement = document.getElementById('lives');
+      this.player = new Player(0,0,"../images/Ships/Spaceship02.png");
+    this.height = 100;
+    this.width = 100;
+    // this.obstacles = [new obstacles(this.gameContainer)];
+    this.score = 0;
+    this.lives = 3;
+    this.isGameOver = false;
+    this.gameIntervalID = null;
+    this.gameLoopFrequency = Math.round(1000 / 60);
+    this.frames = 0;
+  }
 
+  start() {
+    /*Sets the  height and the width of the game screen */
+    this.gameContainer.style.height = `${this.height}%`;
+    this.gameContainer.style.width = `${this.width}%`;
+    // Hide the start screen
+    this.startScreen.style.display = 'none';
 
-        function start() {
-            /*Sets the  height and the width of the game screen */
-            this.gameScreen.style.height = `${this.height}px`;
-            this.gameScreen.style.width = `${this.width}px`;
-            // Hide the start screen
-            this.startScreen.style.display = 'none';
+    // Show the game screen
+    this.gameContainer.style.display = 'flex';
 
-            // Show the game screen
-            this.gameScreen.style.display = 'block';
+    // Runs the gameLoop on a frequency of 60 times per second. Also stores the ID of the interval.
+    this.gameIntervalId = setInterval(() => {
+      this.gameLoop();
+    }, this.gameLoopFrequency);
+  }
 
-            // Runs the gameLoop on a frequency of 60 times per second. Also stores the ID of the interval.
-            this.gameIntervalId = setInterval(() => {
-                this.gameLoop();
-            }, this.gameLoopFrequency);
-        }
+  gameLoop() {
+    // console.log("in the game loop");
+    this.frames++;
+    this.update();
+    // If "gameIsOver" is set to "true" clear the interval to stop the loop
+    if (this.isGameOver === true) {
+      clearInterval(this.gameIntervalId);
+      this.gameOver();
+    } //Add obstacles and enemies below line 42 in game.js
+  }
+  // This causes the player & obstacles to move & , and did to function
+  update() {
+    //this calls the move method from the Player class
+    this.player.move();
+    //update the lives DOM to the new value
+    this.livesElement.innerText = this.lives;
+  }
 
-        function gameLoop() {
-            console.log("in the game loop");
-
-            this.update();
-
-            // If "gameIsOver" is set to "true" clear the interval to stop the loop
-            if (this.gameIsOver) {
-                clearInterval(this.gameIntervalId)
-            }
-
-            function update() {
-                console.log("in the update")
-            }
-        }
-    }
+  gameOver() {
+    console.log('game is over');
+    this.gameContainer.style.display = 'none';
+    this.endScreen.style.display = 'flex';
+  }
 }

@@ -1,20 +1,152 @@
-*, *::before, *::after {
-    box-sizing: border-box;
+@font-face {
+  font-family: 'retroText';
+  src: url(./fonts/1.1_Divinity.Regular.ttf);
+}
+
+@font-face {
+  font-family: 'pressStart';
+  src: url(./fonts/PressStartRegular-ay8E.ttf);
+}
+
+@keyframes slide {
+  0% {
+    background-position: 1387px 0;
+  }
+  95% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -50px 0;
+  }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+/* Keyframe animation for fading out */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'pressStart';
+  font-size: 16px;
+  color: white;
 }
 
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.3rem;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height: 95vh;
-    width: 100%;
-
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url('../images/Backgrounds/Background/Space01.png');
+    animation: slide 25s linear infinite;
+  /* background-size: cover; */
+}
+/* IDs */
+/**************Game Intro******************/
+#game-intro {
+  text-align: center;
+  /* margin-top: auto 0px auto 0px; */
 }
 
-#game-intro {
-    text-align: center;
-    /* margin-top: auto 0px auto 0px; */
+/**************Game Screen******************/
+
+#game-container {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('../images/Backgrounds/BG_DesertMountains/background1.png');
+  animation: slide 5s linear infinite;
+  background-size: cover;
+  height: 100%;
+}
+
+#game-screen img{
+  transform:rotate(90deg);
+}
+
+#stat-info,
+#ctrl-info {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+}
+
+
+.key-info {
+    background-color: rgb(65, 81, 81);
+    display: flex !important;
+    animation: hide 5s;
+      animation: flash 1s steps(1, start) 5, fadeOut 3s ease 2.5s forwards;
+}
+
+#ctrl-info span {
+  display: inline-flex;
+  height: 20px;
+  width: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 3px;
+}
+
+#ctrl-info p {
+  display: flex;
+  align-items: center;
+  margin: auto 10px;
+  font-size: 0.8rem;
+}
+
+#space-bar {
+  background-image: url('../images/Control-keys/space-button-icon2.png');
+  height: 60px !important;
+  width: 60px !important;
+}
+
+#left-ctrl {
+  background-image: url(../images/Control-keys/angle-left-icon.png);
+}
+
+#right-ctrl {
+  background-image: url(../images/Control-keys/angle-right-icon.png);
+}
+
+#up-ctrl {
+  background-image: url(../images/Control-keys/angle-top-icon.png);
+}
+
+#down-ctrl {
+  background-image: url(../images/Control-keys/angle-bottom-icon.png);
+}
+
+
+/**************End Game******************/
+
+#game-end {
+  text-align: center;
+  /* margin-top: auto 0px auto 0px; */
+}
+
+/* classes */
+
+/* .key-info{
+     width:500px
+} */
+
+
+.end-scores{
+    display: flex;
+    justify-content: space-around;
+
 }

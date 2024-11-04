@@ -1,18 +1,46 @@
 window.onload = function () {
   const startButton = document.getElementById('start-button');
   const restartButton = document.getElementById('restart-button');
-  let game; // added
+  let myGame; // added
 
   startButton.addEventListener('click', function () {
     startGame();
   });
 
+  restartButton.addEventListener('click', function () {
+    window.location.reload();
+  })
+
+    document.addEventListener('keydown', (event) => {
+      console.log('a key was pressed', event.code);
+      //check for which button was pressed
+      if (event.code === 'ArrowRight' || event.code === 'KeyD' ) {
+        myGame.player.directionX = 4;
+      }
+      if (event.code === 'ArrowLeft' || event.code === 'KeyA' ) {
+        myGame.player.directionX = -4;
+      }
+      if (event.code === 'ArrowUp' || event.code === 'KeyW' ) {
+        myGame.player.directionY = -4;
+      }
+      if (event.code === 'ArrowDown' || event.code === 'KeyS' ) {
+        myGame.player.directionY = 4;
+      }
+      if (event.code === 'Space') {
+        const projectileLeft = myGame.player.left + 32;
+        const projectileTop = myGame.player.top - 32;
+        myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
+      }
+    });
+    //when you release a key, stop the player from moving
+    document.addEventListener('keyup', () => {
+      myGame.player.directionX = 0;
+      myGame.player.directionY = 0;
+    });
+
   function startGame() {
     console.log('start game');
-    //   startButton.style.backgroundColor = "black"
-    startScreen.style.display = 'none';
-    // game = new Game(); // added
-
-    game.start(); // added
+    myGame = new Game();
+    myGame.start(); // added
   }
 };
