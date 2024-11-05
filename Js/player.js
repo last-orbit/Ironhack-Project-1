@@ -27,16 +27,16 @@ class Player {
       this.left = 22;
     }
     //this keeps the car from going to far Right
-    if (this.left + this.width > 1350) {
-      this.left = 365 - this.width;
+    if (this.left + this.width > 1410) {
+      this.left = 1400 - this.width;
     }
     //this keeps the player from going to far up
     if (this.top < -10) {
       this.top = 0;
     }
     //this keeps the player from going to far down
-    if (this.top + this.height > 535) {
-      this.top = 535 - this.height;
+    if (this.top + this.height > 620  ) {
+      this.top = 615 - this.height;
     }
     this.updatePosition();
   }
@@ -44,5 +44,20 @@ class Player {
     //actually moving the car on the screen
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
+  }
+  didCollide(obstacle) {
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

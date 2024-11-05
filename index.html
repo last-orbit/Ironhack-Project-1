@@ -16,8 +16,8 @@
     </section>
     <section id="game-container">
         <div id="stat-info"><!-- has the high score and lives counter-->
-            <p id="Score">Score:</p>
-            <p id="lives">Lives:</p>
+            <p >Score: <span id="Score">0</span></p>
+            <p >Lives: <span id="lives">3</span></p>
         </div>
         <div id="game-screen"></div><!-- has the game screen-->
         <div id="ctrl-info" class="key-info"><!-- has the controls? -->
@@ -32,14 +32,14 @@
     <section id="game-end" style="display: none;">
                 <h1>Game Over</h1>
                 <div class="end-scores">
-<p>Your Score:</p>
+<p>Your Score: <span id="final-score">0</span></p>
 <p>High Score:</p>
                 </div>
 <p>You lost and the universe has plunge into darkness</p>
                 <button id="restart-button">Play Again</button>
     </section>
+    <script type="text/javascript" src="Js/projectile.js"></script>
     <script type="text/javascript" src="Js/obstacles.js"></script>
-    <script type="text/javascript" src="Js/enemies.js"></script>
     <script type="text/javascript" src="Js/player.js"></script>
     <script type="text/javascript" src="./Js/game.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
