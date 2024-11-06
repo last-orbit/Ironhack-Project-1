@@ -23,17 +23,12 @@ class Projectile {
     this.element.style.left = `${this.left}px`;
     //add the image to the screen
     this.gameScreen.appendChild(this.element);
-    // this.hasHit = false;
-    // this.fireProjectile();
   }
   move() {
     this.left += 4;
     this.updatePosition();
   }
 
-  // remove() {
-  //   this.element.remove();
-  // }
   updatePosition() {
     this.element.style.left = `${this.left}px`;
   }

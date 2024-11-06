@@ -72,10 +72,57 @@ body {
   /* margin-top: auto 0px auto 0px; */
 }
 
+#game-text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.808);
+  height: 400px;
+  width: 95%;
+  margin: 0 auto;
+  align-items: center;
+  border-radius: 15px;
+}
+
+#game-text p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  /* height: 1.5em; */
+  width: 100%;
+  white-space: normal; /* Changed to nowrap for typing effect */
+  overflow: hidden;
+
+}
+
+
 #game-intro h1 {
   color: rgb(255, 252, 252);
 text-transform: uppercase;
 font-size: 3rem;
+}
+.player {
+    background-color: rgba(40, 36, 31, 0.822);
+  border-radius: 15px;
+  width: 150px;
+  height: 150px;
+}
+#players {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+
+#players img {
+  width: 60px;
+  height: 60px;
+  /* margin: 5px 5px; */
+}
+
+button:hover {
+  transform: scale(1.1);
+
 }
 
 
@@ -177,9 +224,7 @@ font-size: 2rem;
     background-color: rgb(118, 118, 118);
     text-shadow: -1px -1px black, 1px 1px white;
     color: rgb(196, 196, 196);
-    -webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	-o-border-radius: 7px;
+
 	border-radius: 7px;
     box-shadow: 0 .2em gray;
     cursor: pointer;
@@ -206,12 +251,14 @@ font-size: 2rem;
   background-repeat: no-repeat;
   animation: explode-animation 2s steps(10) forwards;
 
-*/
+
 @keyframes explode-animation {
   from {
     background-position: 0 0;
   }
   to {
     background-position: -1040px 0;
-  } /* Adjust based on your sprite sheet */
-} */
+  }
+}
+
+*/

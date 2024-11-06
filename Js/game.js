@@ -19,6 +19,11 @@ class Game {
     this.gameIntervalID = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.frames = 0;
+    this.explosion = new Audio('/images/Sounds/Explosion_6.wav')
+    this.explosion.volume = 0.2;
+    this.themeMusic = new Audio('/images/Sounds/retro_metal.ogg');
+    this.themeMusic.volume = 0.4;
+    this.themeMusic.loop = true;
   }
 
   start() {
@@ -35,6 +40,7 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrequency);
+    this.themeMusic.play();
   }
 
   gameLoop() {
@@ -45,7 +51,7 @@ class Game {
       clearInterval(this.gameIntervalId);
       this.gameOver();
     } //Add obstacle and enemies below line 42 in game.js
-    if (this.frames % 120 === 0) {
+    if (this.frames % 100 === 0) {
       this.obstacle.push(new Obstacles(this.gameScreen));
     }
   }
@@ -91,19 +97,18 @@ class Game {
         // this.obstacle.forEach((oneObstacle, obstacleIndex) => {
           // Check if the projectile collided with an obstacle
           if (oneProjectile.didCollide(oneObstacle)) {
-            oneProjectile.hasHit = true;
-
             oneProjectile.element.src = 'images/Explosions/exp1preview.gif';
             // Remove the obstacle from the array
             this.obstacle.splice(oneObstacleIndex, 1);
             // Remove the obstacle from the DOM
             oneObstacle.element.remove();
             this.projectiles.splice(projectileIndex, 1);
-             setTimeout(() => {
+            this.explosion.play();
+            setTimeout(() => {
               // Splice the projectile out of the array
-               // Remove the projectile from the DOM
+              // Remove the projectile from the DOM
               oneProjectile.element.remove();
-             }, 500);
+            }, 500);
             // Increase the score when the obstacle is removed
             this.score++;
             // Update the DOM to have the new score
@@ -114,38 +119,20 @@ class Game {
             this.projectiles.splice(projectileIndex, 1);
             oneProjectile.element.remove();
           }
-          // // Place if statement here removing the projectile 96,98
-          // // Check if the projectile collided with an obstacle
-          // if (oneProjectile.didCollide(oneObstacle)) {
-          //   // Splice the projectile out of the array
-          //   this.projectiles.splice(projectileIndex, 1);
-          //   //.element.src
-          //   // Remove the projectile from the DOM
-          //   oneProjectile.element.remove();
 
-          //   // Splice the obstacle out of the array
-          //   // Remove the obstacle from the DOM
-          //   this.oneObstacle.element.remove();
-          //   // oneObstacle.explode();
-
-          //   this.obstacle.splice(obstacleIndex, 1);
-          //   // Increase the score when the obstacle is removed
-          //   this.score++;
-          //   // Update the DOM to have the new score
-          //   this.scoreElement.innerText = this.score;
-          // }
-          // if (oneProjectile.left > 1500) {
-          //   this.projectiles.splice(projectileIndex, 1);
-          //   oneProjectile.element.remove();
-          //   console.log('projectile removed');
-          // }
-        // });
       });
     });
   }
 
   gameOver() {
     console.log('game is over');
+    this.themeMusic.pause();
+    this.themeMusic.currentTime = 0;
+
+    const EndSound = new Audio('../images/Sounds/mixkit-discover-587.mp3');
+    EndSound.volume = 1;
+    EndSound.play();
+    EndSound.loop = true;
     //Display functionality
     this.gameContainer.style.display = 'none';
     this.endScreen.style.display = 'flex';
