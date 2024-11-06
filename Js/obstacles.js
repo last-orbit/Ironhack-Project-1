@@ -7,10 +7,10 @@ class Obstacles {
         this.randomIndex = Math.floor(Math.random() * this.positions.length);
         this.top = this.positions[this.randomIndex];
         this.left = 1480;
-        this.width = 40;
+        this.width = 80;
         this.height = 80;
         this.isExploded = false;
-        //this is creating the player and adding them to the screen
+
         this.element = document.createElement("img");
         this.element.src = "../images/Obstacles/Items/Asteroids01.png";
         this.element.style.position = "absolute";
@@ -28,30 +28,5 @@ class Obstacles {
     updatePosition() {
         this.element.style.left = `${this.left}px`;
     }
-    explode() {
-        if (!this.isExploded) { // Only allow one explosion per obstacle
-            this.isExploded = true;
 
-            // Remove the obstacle image from the DOM
-            this.element.remove();
-
-            // Create explosion effect
-            const explosion = document.createElement('div');
-            explosion.classList.add('explosion'); // This CSS class should define the explosion animation
-            explosion.style.position = 'absolute';
-            explosion.style.left = `${this.left}px`;
-            explosion.style.top = `${this.top}px`;
-        console.log('Explosion element created:', explosion);
-
-            // Add explosion element to the game screen
-            this.gameScreen.appendChild(explosion);
-        console.log('Explosion element added to game screen');
-
-            // Remove explosion after animation duration
-            setTimeout(() => {
-                explosion.remove();
-                console.log('Explosion element removed');
-            }, 500); // Adjust this
-        }
-    }
 }

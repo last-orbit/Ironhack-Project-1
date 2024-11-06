@@ -14,7 +14,7 @@ window.onload = function () {
   document.addEventListener('keydown', (event) => {
     // console.log('a key was pressed', event.code);
     //check for which button was pressed
-    
+
     if (event.code === 'ArrowRight' || event.code === 'KeyD') {
       myGame.player.directionX = 4;
     }
@@ -31,17 +31,15 @@ window.onload = function () {
       console.log('firing projectile')
       const projectileLeft = myGame.player.left + 105;
       const projectileTop = myGame.player.top + 32;
-      myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
+      if (myGame.canFire) {
+        myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
 
-      myGame.canFire = false;
-      setTimeout(() => {
-        myGame.canFire = true;
-      console.log('canFire reset to true');
-        // Reset canFire after cooldown
-      }, myGame.fireCoolDown);
-    } else {
-      console.log('Cannot fire yet, cooldown in progress');
-
+        myGame.canFire = false;
+        setTimeout(() => {
+          myGame.canFire = true;
+          // Reset canFire after cooldown
+        }, myGame.fireCoolDown);
+      }
     }
   });
   //when you release a key, stop the player from moving

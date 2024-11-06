@@ -8,6 +8,8 @@ class Projectile {
     //this is creating the player and adding them to the screen
     this.element = document.createElement('img');
     this.element.src = '../images/Weapons/cannonBullet2.png';
+        this.element.style.transform = 'rotate(90deg)';
+
     this.element.style.position = 'absolute';
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
@@ -15,11 +17,18 @@ class Projectile {
     this.element.style.left = `${this.left}px`;
     //add the image to the screen
     this.gameScreen.appendChild(this.element);
+    // this.hasHit = false;
   }
   move() {
-    this.left += 4;
-    this.updatePosition();
-  }
+
+      this.left += 4;
+      this.updatePosition();
+
+}
+
+  // remove() {
+  //   this.element.remove();
+  // }
   updatePosition() {
     this.element.style.left = `${this.left}px`;
   }

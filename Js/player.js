@@ -11,6 +11,8 @@ class Player {
     //Adds ship
     this.element = document.createElement('img');
     this.element.src = playerImage;
+        this.element.style.transform = 'rotate(90deg)';
+
     this.element.style.position = 'absolute';
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;

@@ -59,7 +59,9 @@ body {
   width: 100%;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-image: url('../images/Backgrounds/Background/Space01.png');
+  background-image: url('../images/Backgrounds/Clouds/Clouds2/4.png');
+  background-color: rgba(56, 56, 156, 0.658);
+  background-size: cover;
   animation: slide 25s linear infinite;
   /* background-size: cover; */
 }
@@ -69,6 +71,13 @@ body {
   text-align: center;
   /* margin-top: auto 0px auto 0px; */
 }
+
+#game-intro h1 {
+  color: rgb(255, 252, 252);
+text-transform: uppercase;
+font-size: 3rem;
+}
+
 
 /**************Game Screen******************/
 
@@ -84,7 +93,7 @@ body {
 }
 
 #game-screen img {
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 
 #stat-info,
@@ -146,13 +155,40 @@ body {
   /* margin-top: auto 0px auto 0px; */
 }
 
+#game-end h1 {
+  color: rgba(181, 29, 29, 0.879);
+text-transform: uppercase;
+font-size: 2rem;
+}
+
 #game-end button {
   width: 30%;
   margin: 0 auto;
 }
 
-/* classes */
+/************ classes *******************/
 
+.button {
+  text-align: center;
+	display: inline-block;
+	margin:5px;
+    font-weight: bold;
+    padding: 10px 0 10px 10px ;
+    background-color: rgb(118, 118, 118);
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: rgb(196, 196, 196);
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray;
+    cursor: pointer;
+}
+.start-btn:active {
+	box-shadow: none;
+	position: relative;
+	top: .2em;
+}
 /* .key-info{
      width:500px
 } */

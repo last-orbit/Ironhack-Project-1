@@ -38,7 +38,6 @@ class Game {
   }
 
   gameLoop() {
-    // console.log("in the game loop");
     this.frames++;
     this.update();
     // If "gameIsOver" is set to "true" clear the interval to stop the loop
@@ -49,7 +48,6 @@ class Game {
     if (this.frames % 120 === 0) {
       this.obstacle.push(new Obstacles(this.gameScreen));
     }
-
   }
   // This causes the player & obstacles to move & , and did to function
   update() {
@@ -62,10 +60,10 @@ class Game {
       if (didHitMyShip) {
         //subtract a life
         this.lives--;
-            this.player.element.classList.add('flash');
-            setTimeout(() => {
-              this.player.element.classList.remove('flash');
-            }, 500);
+        this.player.element.classList.add('flash');
+        setTimeout(() => {
+          this.player.element.classList.remove('flash');
+        }, 500);
         if (this.lives === 0) {
           this.isGameOver = true;
         }
@@ -87,25 +85,58 @@ class Game {
       }
       this.projectiles.forEach((oneProjectile, projectileIndex) => {
         oneProjectile.move();
-        this.obstacle.forEach((oneObstacle, obstacleIndex) => {
+        // this.obstacle.forEach((oneObstacle, obstacleIndex) => {
           // Check if the projectile collided with an obstacle
           if (oneProjectile.didCollide(oneObstacle)) {
-            // Splice the projectile out of the array
-            this.projectiles.splice(projectileIndex, 1);
-            // Remove the projectile from the DOM
-            oneProjectile.element.remove();
+            // oneProjectile.hasHit = true;
 
-            // Splice the obstacle out of the array
+            oneProjectile.element.src = '../images/Explosions/exp1preview.gif';
+            // Remove the obstacle from the array
+            this.obstacle.splice(oneObstacleIndex, 1);
             // Remove the obstacle from the DOM
-            oneObstacle.explode();
-
-            this.obstacle.splice(obstacleIndex, 1);
+            oneObstacle.element.remove();
+            this.projectiles.splice(projectileIndex, 1);
+             setTimeout(() => {
+              // Splice the projectile out of the array
+               // Remove the projectile from the DOM
+              oneProjectile.element.remove();
+             }, 500);
             // Increase the score when the obstacle is removed
             this.score++;
             // Update the DOM to have the new score
             this.scoreElement.innerText = this.score;
           }
-        });
+          if (oneProjectile.left > 1500) {
+            console.log('Projectile removed due to boundary condition');
+            this.projectiles.splice(projectileIndex, 1);
+            oneProjectile.element.remove();
+          }
+          // // Place if statement here removing the projectile 96,98
+          // // Check if the projectile collided with an obstacle
+          // if (oneProjectile.didCollide(oneObstacle)) {
+          //   // Splice the projectile out of the array
+          //   this.projectiles.splice(projectileIndex, 1);
+          //   //.element.src
+          //   // Remove the projectile from the DOM
+          //   oneProjectile.element.remove();
+
+          //   // Splice the obstacle out of the array
+          //   // Remove the obstacle from the DOM
+          //   this.oneObstacle.element.remove();
+          //   // oneObstacle.explode();
+
+          //   this.obstacle.splice(obstacleIndex, 1);
+          //   // Increase the score when the obstacle is removed
+          //   this.score++;
+          //   // Update the DOM to have the new score
+          //   this.scoreElement.innerText = this.score;
+          // }
+          // if (oneProjectile.left > 1500) {
+          //   this.projectiles.splice(projectileIndex, 1);
+          //   oneProjectile.element.remove();
+          //   console.log('projectile removed');
+          // }
+        // });
       });
     });
   }
