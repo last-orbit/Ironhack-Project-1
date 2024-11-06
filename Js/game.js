@@ -53,7 +53,6 @@ class Game {
   update() {
     //this calls the move method from the Player class
     this.player.move();
-    // this.projectile.fireProjectile();
     this.obstacle.forEach((oneObstacle, oneObstacleIndex) => {
       oneObstacle.move();
       //this checks each oneObstacle if it collided with my player
@@ -86,6 +85,9 @@ class Game {
       }
       this.projectiles.forEach((oneProjectile, projectileIndex) => {
         oneProjectile.move();
+        if (this.frames % 30 === 0) {
+          oneProjectile.fireProjectile();
+        }
         // this.obstacle.forEach((oneObstacle, obstacleIndex) => {
           // Check if the projectile collided with an obstacle
           if (oneProjectile.didCollide(oneObstacle)) {

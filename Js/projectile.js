@@ -24,7 +24,7 @@ class Projectile {
     //add the image to the screen
     this.gameScreen.appendChild(this.element);
     // this.hasHit = false;
-    this.fireProjectile();
+    // this.fireProjectile();
   }
   move() {
     this.left += 4;

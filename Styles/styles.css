@@ -59,7 +59,7 @@ body {
   width: 100%;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-image: url('images/Backgrounds/Clouds/Clouds2/4.png');
+  background-image: url('../images/Backgrounds/Clouds/Clouds2/4.png');
   background-color: rgba(56, 56, 156, 0.658);
   background-size: cover;
   animation: slide 25s linear infinite;
@@ -86,7 +86,7 @@ font-size: 3rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-image: url('images/Backgrounds/BG_DesertMountains/background1.png');
+  background-image: url('../images/Backgrounds/BG_DesertMountains/background1.png');
   animation: slide 5s linear infinite;
   background-size: cover;
   height: 100%;
@@ -127,7 +127,7 @@ font-size: 3rem;
 }
 
 #space-bar {
-  background-image: url('images/Control-keys/space-button-icon2.png');
+  background-image: url('../images/Control-keys/space-button-icon2.png');
   height: 60px !important;
   width: 60px !important;
 }
@@ -191,22 +191,22 @@ font-size: 2rem;
 }
 /* .key-info{
      width:500px
-} */
+}
 
 .end-scores {
   display: flex;
   justify-content: space-around;
 }
-
-.explosion {
-  width: 104px; /* Width of a single frame */
-  height: 48px; /* Height of each frame */
-  background-image: url('images/Weapons/explosion-b.png') no-repeat center
+/*
+ .explosion {
+  width: 104px;
+  height: 48px;
+  background-image: url('../images/Weapons/explosion-b.png') no-repeat center
     center;
   background-repeat: no-repeat;
   animation: explode-animation 2s steps(10) forwards;
-}
 
+*/
 @keyframes explode-animation {
   from {
     background-position: 0 0;
@@ -214,4 +214,4 @@ font-size: 2rem;
   to {
     background-position: -1040px 0;
   } /* Adjust based on your sprite sheet */
-}
+} */
