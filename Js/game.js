@@ -129,7 +129,7 @@ class Game {
     this.themeMusic.pause();
     this.themeMusic.currentTime = 0;
 
-    const EndSound = new Audio('../images/Sounds/mixkit-discover-587.mp3');
+    const EndSound = new Audio('images/Sounds/mixkit-discover-587.mp3');
     EndSound.volume = 1;
     EndSound.play();
     EndSound.loop = true;

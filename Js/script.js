@@ -2,7 +2,7 @@ window.onload = function () {
   const startButton = document.getElementById('start-button');
   const restartButton = document.getElementById('restart-button');
   let myGame; // added
-  const introSound = new Audio('../images/Sounds/mixkit-1980-290.mp3');
+  const introSound = new Audio('images/Sounds/mixkit-1980-290.mp3');
   introSound.volume = 1;
   introSound.play();
   introSound.loop = true;
