@@ -3,13 +3,14 @@ class Projectile {
     this.gameScreen = document.getElementById('game-screen');
     this.left = positionX;
     this.top = positionY;
-    this.width = 18.75;
-    this.height = 37.5;
+    this.width = 75;
+    this.height = 100;
     //this is creating the player and adding them to the screen
     this.element = document.createElement('img');
-    this.element.src = '../images/Weapons/cannonBullet2.png';
-        this.element.style.transform = 'rotate(90deg)';
-
+    this.proImg = ['../images/Weapons/row-1-column-1.png', '../images/Weapons/row-1-column-2.png', '../images/Weapons/row-1-column-3.png', '../images/Weapons/row-1-column-4.png']
+    this.proImgIndex = 0;
+    this.element.style.transform = 'rotate(90deg)';
+    this.element.src = this.proImg[this.proImgIndex];
     this.element.style.position = 'absolute';
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
@@ -21,10 +22,10 @@ class Projectile {
   }
   move() {
 
-      this.left += 4;
-      this.updatePosition();
+    this.left += 4;
+    this.updatePosition();
 
-}
+  }
 
   // remove() {
   //   this.element.remove();
@@ -46,5 +47,16 @@ class Projectile {
     } else {
       return false;
     }
+  }
+  movingProj() {
+    setInterval(() => {
+      if (this.proImg === this.proImg.length - 1) {
+        this.proImg = 0;
+        this.element.src = this.proImg[this.proImg];
+      } else {
+        this.proImg++;
+        this.element.src = this.proImg[this.proImg];
+      }
+    }, 200);
   }
 }
