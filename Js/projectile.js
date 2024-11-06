@@ -7,7 +7,12 @@ class Projectile {
     this.height = 100;
     //this is creating the player and adding them to the screen
     this.element = document.createElement('img');
-    this.proImg = ['../images/Weapons/row-1-column-1.png', '../images/Weapons/row-1-column-2.png', '../images/Weapons/row-1-column-3.png', '../images/Weapons/row-1-column-4.png']
+    this.proImg = [
+      'images/Weapons/row-1-column-1.png',
+      'images/Weapons/row-1-column-2.png',
+      'images/Weapons/row-1-column-3.png',
+      'images/Weapons/row-1-column-4.png',
+    ];
     this.proImgIndex = 0;
     this.element.style.transform = 'rotate(90deg)';
     this.element.src = this.proImg[this.proImgIndex];
@@ -19,12 +24,11 @@ class Projectile {
     //add the image to the screen
     this.gameScreen.appendChild(this.element);
     // this.hasHit = false;
+    this.fireProjectile();
   }
   move() {
-
     this.left += 4;
     this.updatePosition();
-
   }
 
   // remove() {
@@ -48,15 +52,16 @@ class Projectile {
       return false;
     }
   }
-  movingProj() {
+  fireProjectile() {
     setInterval(() => {
-      if (this.proImg === this.proImg.length - 1) {
-        this.proImg = 0;
-        this.element.src = this.proImg[this.proImg];
+      if (this.proImgIndex === this.proImg.length - 1) {
+        this.proImgIndex = 0;
+        this.element.src = this.proImg[this.proImgIndex];
       } else {
-        this.proImg++;
-        this.element.src = this.proImg[this.proImg];
+        this.proImgIndex++;
+        this.element.src = this.proImg[this.proImgIndex];
       }
-    }, 200);
+    }, 600);
+    // this.oneProjectile.element.remove();
   }
 }

@@ -6,7 +6,7 @@ class Game {
     this.endScreen = document.getElementById('game-end');
     this.scoreElement = document.getElementById('Score');
     this.livesElement = document.getElementById('lives');
-    this.player = new Player(250, 0, '../images/Ships/Spaceship02.png');
+    this.player = new Player(250, 0, 'images/Ships/Spaceship02.png');
     this.height = 100;
     this.width = 100;
     this.obstacle = [new Obstacles(this.gameScreen)];
@@ -53,6 +53,7 @@ class Game {
   update() {
     //this calls the move method from the Player class
     this.player.move();
+    // this.projectile.fireProjectile();
     this.obstacle.forEach((oneObstacle, oneObstacleIndex) => {
       oneObstacle.move();
       //this checks each oneObstacle if it collided with my player
@@ -88,9 +89,9 @@ class Game {
         // this.obstacle.forEach((oneObstacle, obstacleIndex) => {
           // Check if the projectile collided with an obstacle
           if (oneProjectile.didCollide(oneObstacle)) {
-            // oneProjectile.hasHit = true;
+            oneProjectile.hasHit = true;
 
-            oneProjectile.element.src = '../images/Explosions/exp1preview.gif';
+            oneProjectile.element.src = 'images/Explosions/exp1preview.gif';
             // Remove the obstacle from the array
             this.obstacle.splice(oneObstacleIndex, 1);
             // Remove the obstacle from the DOM

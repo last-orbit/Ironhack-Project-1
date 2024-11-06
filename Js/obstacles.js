@@ -12,7 +12,7 @@ class Obstacles {
         this.isExploded = false;
 
         this.element = document.createElement("img");
-        this.element.src = "../images/Obstacles/Items/Asteroids01.png";
+        this.element.src = "images/Obstacles/Items/Asteroids01.png";
         this.element.style.position = "absolute";
         this.element.style.height = `${this.height}px`;
         this.element.style.width = `${this.width}px`;
