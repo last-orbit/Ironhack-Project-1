@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./Styles/styles.css">
 </head>
 <body>
-    <section id="game-intro" >
-        <h1>Colony Wars</h1>
+    <section id="game-intro">
+
+        <h1>Space Wars</h1>
         <section id="game-text"  style="display: none;">
             <p>You find yourself on the bizarre, misty planet of Barfnarf, where colors shift in the air, and strange plants hum with
             an otherworldly tune. You've been tasked with finding Princess Zephyrine, who has mysteriously left her castle. Some say
@@ -24,8 +25,9 @@
             <span> Insert Coins Below!!</span>
         </p>
         </section>
-        <p>A classic shoot-em up.</p>
-        <p>Choose your Player</p>
+        <p>A retro game that doesn't actually take place in space.</p>
+        <p>Now</p>
+        <p>---Choose your Player---</p>
         <section id="players">
             <button class="player" id="player1">
                 <img src="images/Ships/Spaceship01.png" alt="Player 1" class="player-img">
@@ -37,11 +39,16 @@
             </button>
         </section>
         <button id="start-button" class="button">Start Game</button>
+        <p id="coins">Insert Coins!!</p>
+        <button id="audio-symbol"></button>
     </section>
     <section id="game-container">
         <div id="stat-info"><!-- has the high score and lives counter-->
             <p >Score: <span id="Score">0</span></p>
             <p >Lives: <span id="lives">3</span></p>
+        </div>
+        <div id="banner-text" >
+            <p>Hold Over Text</p>
         </div>
         <div id="game-screen"></div><!-- has the game screen-->
         <div id="ctrl-info" class="key-info"><!-- has the controls? -->
@@ -54,12 +61,12 @@
         </div>
     </section>
     <section id="game-end" style="display: none;">
-                <h1>Game Over!!</h1>
+                <h1 id="game-end-h1">Game Over!!</h1>
                 <div class="end-scores">
 <p>Your Score: <span id="final-score">0</span></p>
-<p>High Score:</p>
+<!-- <p>High Score:</p> -->
                 </div>
-<p>You lost and the universe has plunge into darkness</p>
+<p id="game-end-p">You lost and the universe has plunge into darkness</p>
                 <button id="restart-button" class="button">Play Again</button>
     </section>
     <script type="text/javascript" src="Js/projectile.js"></script>

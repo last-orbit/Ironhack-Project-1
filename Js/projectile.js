@@ -3,6 +3,7 @@ class Projectile {
     this.gameScreen = document.getElementById('game-screen');
     this.left = positionX;
     this.top = positionY;
+    this.damage = 10;
     this.width = 75;
     this.height = 100;
     //this is creating the player and adding them to the screen

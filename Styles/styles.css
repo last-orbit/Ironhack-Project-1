@@ -20,14 +20,25 @@
   }
 }
 
+.got-hit {
+  color: rgba(255, 255, 255, 0.479);
+  animation: flash 0.4s steps(5, start) 10, fadeOut 3s ease 2.5s forwards;
+}
+
 .flash {
-  animation: flash 1s steps(1, start) 5, fadeOut 3s ease 2.5s forwards;
+  animation: flash 1s steps(3, start) 5, fadeOut 3s ease 2.5s forwards;
 }
 
 @keyframes flash {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Keyframe animation for fading out */
@@ -92,27 +103,25 @@ body {
   width: 100%;
   white-space: normal; /* Changed to nowrap for typing effect */
   overflow: hidden;
-
 }
-
 
 #game-intro h1 {
   color: rgb(255, 252, 252);
-text-transform: uppercase;
-font-size: 3rem;
+  text-transform: uppercase;
+  font-size: 3rem;
 }
 .player {
-    background-color: rgba(40, 36, 31, 0.822);
+  background-color: rgba(40, 36, 31, 0.822);
   border-radius: 15px;
   width: 150px;
   height: 150px;
+  cursor: pointer;
 }
 #players {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-bottom: 15px;
 }
-
 
 #players img {
   width: 60px;
@@ -122,9 +131,23 @@ font-size: 3rem;
 
 button:hover {
   transform: scale(1.1);
-
 }
 
+#coins {
+  margin-top: 50px;
+  animation: flash 1s steps(1, start) infinite;
+}
+
+#audio-symbol {
+  position: absolute;
+  top: 550px;
+  left: 1300px;
+  border-radius: 6px;
+  background-color: rgba(59, 49, 49, 0.304);
+  width: 52px !important;
+  height: 42px !important;
+  background-position: center;
+}
 
 /**************Game Screen******************/
 
@@ -139,15 +162,30 @@ button:hover {
   height: 100%;
 }
 
-#game-screen img {
-  /* transform: rotate(90deg); */
-}
-
 #stat-info,
 #ctrl-info {
   display: flex;
   width: 95%;
   justify-content: space-between;
+}
+
+#banner-text {
+  width: 100%;
+  background-color: rgba(238, 250, 4, 0.425);
+  height: 100px;
+  text-align: center;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  animation: flash 1.2s steps(1, start) 10, fadeOut 3s ease 3s forwards;
+}
+
+#banner-text p {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  
+  color: rgb(169, 3, 3);
 }
 
 .key-info {
@@ -204,8 +242,8 @@ button:hover {
 
 #game-end h1 {
   color: rgba(181, 29, 29, 0.879);
-text-transform: uppercase;
-font-size: 2rem;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 #game-end button {
@@ -217,22 +255,38 @@ font-size: 2rem;
 
 .button {
   text-align: center;
-	display: inline-block;
-	margin:5px;
-    font-weight: bold;
-    padding: 10px 0 10px 10px ;
-    background-color: rgb(118, 118, 118);
-    text-shadow: -1px -1px black, 1px 1px white;
-    color: rgb(196, 196, 196);
+  display: inline-block;
+  margin: 5px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  background-color: rgb(118, 118, 118);
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: rgb(196, 196, 196);
 
-	border-radius: 7px;
-    box-shadow: 0 .2em gray;
-    cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
 }
+
+.selected {
+  background-color: rgba(0, 0, 0, 0.932);
+  color: white;
+}
+
+.volume-on {
+  background-image: url(../images/32-Volume-full.png);
+
+  background-repeat: no-repeat;
+}
+.volume-off {
+  background-image: url(../images/32-Volume-Silent.png);
+  background-repeat: no-repeat;
+}
+
 .start-btn:active {
-	box-shadow: none;
-	position: relative;
-	top: .2em;
+  box-shadow: none;
+  position: relative;
+  top: 0.2em;
 }
 /* .key-info{
      width:500px

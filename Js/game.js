@@ -6,25 +6,34 @@ class Game {
     this.endScreen = document.getElementById('game-end');
     this.scoreElement = document.getElementById('Score');
     this.livesElement = document.getElementById('lives');
-    this.player = new Player(250, 0, 'images/Ships/Spaceship02.png');
+    this.player = new Player(250, 0, playerImage);
     this.height = 100;
     this.width = 100;
     this.obstacle = [new Obstacles(this.gameScreen)];
     this.projectiles = [];
+    //Game logic
     this.score = 0;
     this.lives = 3;
     this.isGameOver = false;
+    this.isGameWon = false;
     this.canFire = true;
     this.fireCoolDown = 400;
     this.gameIntervalID = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.frames = 0;
+    //Game sounds
     this.explosion = new Audio('/images/Sounds/Explosion_6.wav')
     this.explosion.volume = 0.2;
     this.themeMusic = new Audio('/images/Sounds/retro_metal.ogg');
     this.themeMusic.volume = 0.4;
     this.themeMusic.loop = true;
+    this.hitSound = new Audio('/images/Hit 2 - Sound effects Pack 2.mp3');
+    this.hitSound.volume = 0.8;
+    this.pointSound = new Audio('/images/Bleep_03.ogg');
+    this.pointSound.volume = 0.6;
   }
+
+
 
   start() {
     /*Sets the  height and the width of the game screen */
@@ -46,35 +55,53 @@ class Game {
   gameLoop() {
     this.frames++;
     this.update();
-    // If "gameIsOver" is set to "true" clear the interval to stop the loop
+
+
+    if (this.frames === 5400) {
+      this.isGameWon = true;
+    }
+
+    if (this.isGameWon === true) {
+      clearInterval(this.gameIntervalId);
+      this.gameWon();
+    }
     if (this.isGameOver === true) {
       clearInterval(this.gameIntervalId);
       this.gameOver();
-    } //Add obstacle and enemies below line 42 in game.js
-    if (this.frames % 100 === 0) {
+    }
+
+    if (this.frames % 80 === 0) {
+      this.obstacle.push(new Obstacles(this.gameScreen));
+    }
+    if (this.frames % 140 === 0) {
       this.obstacle.push(new Obstacles(this.gameScreen));
     }
   }
-  // This causes the player & obstacles to move & , and did to function
+
   update() {
     //this calls the move method from the Player class
     this.player.move();
+    // this.enemy.move();
     this.obstacle.forEach((oneObstacle, oneObstacleIndex) => {
       oneObstacle.move();
+      // oneObstacle.spin();
       //this checks each oneObstacle if it collided with my player
       const didHitMyShip = this.player.didCollide(oneObstacle);
       if (didHitMyShip) {
+        //play the hit sound
+        this.hitSound.play();
         //subtract a life
         this.lives--;
-        this.player.element.classList.add('flash');
+        this.player.element.classList.add('got-hit');
         setTimeout(() => {
-          this.player.element.classList.remove('flash');
-        }, 500);
+          this.player.element.classList.remove('got-hit');
+        }, 1000);
         if (this.lives === 0) {
           this.isGameOver = true;
         }
-        //update the lives DOM to the new value
-        this.livesElement.innerText = this.lives;
+
+          //update the lives DOM to the new value
+          this.livesElement.innerText = this.lives;
         this.obstacle.splice(oneObstacleIndex, 1);
         //remove the red car from the DOM
         oneObstacle.element.remove();
@@ -110,7 +137,8 @@ class Game {
               oneProjectile.element.remove();
             }, 500);
             // Increase the score when the obstacle is removed
-            this.score++;
+            this.score+= 3;
+            this.pointSound.play();
             // Update the DOM to have the new score
             this.scoreElement.innerText = this.score;
           }
@@ -122,6 +150,27 @@ class Game {
 
       });
     });
+  }
+
+  gameWon() {
+    console.log('game is won');
+    const gameEndH1 = document.getElementById('game-end-h1');
+    const gameEndP = document.getElementById('game-end-p');
+      this.themeMusic.pause();
+      this.themeMusic.currentTime = 0;
+      const EndSound = new Audio('images/Sounds/mixkit-discover-587.mp3');
+      EndSound.volume = 1;
+      EndSound.play();
+      EndSound.loop = true;
+      //Display functionality
+      this.gameContainer.style.display = 'none';
+      this.endScreen.style.display = 'flex';
+      this.endScreen.style.flexDirection = 'column';
+      //Updating Score
+      const finalScoreElement = document.getElementById('final-score');
+      finalScoreElement.innerText = this.score;
+    gameEndH1.innerText = 'Too Easy!';
+    gameEndP.innerText = 'You have successfully navigated through the asteroid field!';
   }
 
   gameOver() {
