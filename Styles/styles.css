@@ -140,8 +140,8 @@ button:hover {
 
 #audio-symbol {
   position: absolute;
-  top: 550px;
-  left: 1300px;
+  top: 520px;
+  left: 1250px;
   border-radius: 6px;
   background-color: rgba(59, 49, 49, 0.304);
   width: 52px !important;
@@ -169,7 +169,7 @@ button:hover {
   justify-content: space-between;
 }
 
-#banner-text {
+/* #banner-text {
   width: 100%;
   background-color: rgba(238, 250, 4, 0.425);
   height: 100px;
@@ -184,9 +184,9 @@ button:hover {
 #banner-text p {
   font-size: 3.5rem;
   text-transform: uppercase;
-  
+
   color: rgb(169, 3, 3);
-}
+} */
 
 .key-info {
   background-color: rgb(65, 81, 81);
