@@ -155,9 +155,9 @@ Space Wars is a game where you control a small ship and dodge asteroids. You ear
     this.element.style.left ;
 
     this.gameScreen.appendChild(this.element);
--move()
--updatePosition()
--fireProjectile()
+- move()
+- updatePosition()
+- fireProjectile()
 
 # Links
 
