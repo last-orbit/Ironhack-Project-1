@@ -140,8 +140,8 @@ button:hover {
 
 #audio-symbol {
   position: absolute;
-  top: 520px;
-  left: 1250px;
+  top: 490px;
+  left: 1210px;
   border-radius: 6px;
   background-color: rgba(59, 49, 49, 0.304);
   width: 52px !important;
