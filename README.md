@@ -163,5 +163,7 @@ Space Wars is a game where you control a small ship and dodge asteroids. You ear
 
 
 -[Slides Link](https://docs.google.com/presentation/d/1dNHSQd47RoV-iBnu9RzSZhnua8i0PHlklpIUw3_lO_0/edit#slide=id.p)
+
 -[Github repository Link](https://github.com/last-orbit/Space-Wars)
+
 -[Deployment Link](https://last-orbit.github.io/Space-Wars/)
