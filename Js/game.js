@@ -22,14 +22,14 @@ class Game {
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.frames = 0;
     //Game sounds
-    this.explosion = new Audio('/images/Sounds/Explosion_6.wav')
+    this.explosion = new Audio('images/Sounds/Explosion_6.wav')
     this.explosion.volume = 0.2;
-    this.themeMusic = new Audio('/images/Sounds/retro_metal.ogg');
+    this.themeMusic = new Audio('images/Sounds/retro_metal.ogg');
     this.themeMusic.volume = 0.4;
     this.themeMusic.loop = true;
-    this.hitSound = new Audio('/images/Hit 2 - Sound effects Pack 2.mp3');
+    this.hitSound = new Audio('images/Hit 2 - Sound effects Pack 2.mp3');
     this.hitSound.volume = 0.8;
-    this.pointSound = new Audio('/images/Bleep_03.ogg');
+    this.pointSound = new Audio('images/Bleep_03.ogg');
     this.pointSound.volume = 0.6;
   }
 

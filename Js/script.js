@@ -13,15 +13,15 @@ window.onload = function () {
   introSound.play();
       audioButton.classList.add('volume-on'); // Add the "volume on" class
 
-  const selectPlayer = new Audio('/images/Sequence_02.ogg');
+  const selectPlayer = new Audio('images/Sequence_02.ogg');
   selectPlayer.volume = 0.8;
-  const startGameButton = new Audio('/images/Click_Mid-High.wav');
+  const startGameButton = new Audio('images/Click_Mid-High.wav');
   startGameButton.volume = 0.8;
 
-  const fireProjectile = new Audio('/images/Laser-weapon 6 - Sound effects Pack 2.mp3');
+  const fireProjectile = new Audio('images/Laser-weapon 6 - Sound effects Pack 2.mp3');
   fireProjectile.volume = 0.1;
 
-  const secretSound = new Audio('/images/Coins 6 - Sound effects Pack 2.mp3')
+  const secretSound = new Audio('images/Coins 6 - Sound effects Pack 2.mp3')
   secretSound.volume = 0.6;
 
   audioButton.addEventListener('click', function () {
@@ -53,7 +53,7 @@ window.onload = function () {
       myGame.score += 100;
       myGame.scoreElement.innerText = myGame.score;
       secretSound.play();
-      myGame.player.element.src = '/images/Ships/Main Ship - Base - Full health.png'
+      myGame.player.element.src = 'images/Ships/Main Ship - Base - Full health.png'
       // return changeChar()
 
     }
@@ -106,11 +106,11 @@ window.onload = function () {
   function startGame() {
     console.log('start game');
     if (player1.classList.contains('selected')) {
-      playerImage = '/images/Ships/Spaceship01.png';
+      playerImage = 'images/Ships/Spaceship01.png';
     } else if (player2.classList.contains('selected')){
-      playerImage = '/images/Ships/Spaceship02.png';
+      playerImage = 'images/Ships/Spaceship02.png';
     } else {
-      playerImage = '/images/Ships/Spaceship01.png';
+      playerImage = 'images/Ships/Spaceship01.png';
     }
     myGame = new Game();
     myGame.start(); // added
